@@ -1,0 +1,101 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- Version patched by Github Workflow Actions, modify on build config if needed -->
+		<Version></Version>
+
+		<!-- Frameworks and language features -->
+		<TargetFrameworks>netstandard2.1;net5;net6</TargetFrameworks>
+		<LangVersion>8.0</LangVersion>
+		<RazorLangVersion>3.0</RazorLangVersion> 
+		<Nullable>enable</Nullable> 
+		<IsPackable>true</IsPackable>
+		<OutputType>Library</OutputType>
+		<Description>Blazor libarary that provides access to a number of Browser Web APIs via JSInterop.</Description>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<AnalysisLevel>latest</AnalysisLevel>
+
+		<!-- Assembly metadata -->
+		<Product>Webzor</Product>
+		<Company>Abdurahim Khudoyberdiev</Company>
+		<Authors>Abdurahim Khudoyberdiev</Authors>
+		<PackageIcon>logo.png</PackageIcon>
+		<RootNamespace>Webzor</RootNamespace>
+		<AssemblyName>Webzor</AssemblyName>
+		<AssemblyTitle>Webzor</AssemblyTitle>
+
+		<NeutralLanguage>en-US</NeutralLanguage>
+
+		<Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+
+		<!--Package-->
+		<Title>Webzor</Title>
+		<Summary>Blazor libarary that provides access to a number of Browser Web APIs via JSInterop.</Summary>
+		<Copyright>Copyright © 2022</Copyright>
+		<PackageId>Webzor</PackageId>
+		<PackageProjectUrl>https://github.com/abberdeen/webzor</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/abberdeen/webzor</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageReleaseNotes>https://github.com/abberdeen/webzor/releases</PackageReleaseNotes>
+		<PackageTags>blazor,web-api,console,geolocation,screen,clipboard,razor,components</PackageTags>
+		<PackageIcon>packageIcon.png</PackageIcon>
+		<PackageIconUrl>https://github.com/abberdeen/webzor/.github/images/icon.png</PackageIconUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<EmbedAllSources>true</EmbedAllSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- The nuget package icon -->
+		<None Include="..\..\.editorconfig" Link=".editorconfig" />
+		<None Include="..\..\README.md" Pack="true" PackagePath="" />
+		<None Include="logo.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- ignore the tsconfig.json file in package -->
+		<Content Remove="tsconfig.json" />
+		<None Include="tsconfig.json" CopyToOutputDirectory="Never"></None>
+	</ItemGroup>
+ 
+	<ItemGroup>
+		<Folder Include="Core\JsInterop\" />
+		<Folder Include="Core\Helpers\" />
+		<Folder Include="Core\Base\" />
+		<Folder Include="GeolocationApi\" />
+		<Folder Include="ScreenApi\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+		<PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.8.4">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework) == 'netstandard2.1'">
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework) == 'net5'">
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework) == 'net6'">
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
+	</ItemGroup>
+
+
+</Project>
