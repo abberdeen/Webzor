@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
 		<!-- Version patched by Github Workflow Actions, modify on build config if needed -->
@@ -20,17 +20,15 @@
 		<!-- Assembly metadata -->
 		<Product>Webzor</Product>
 		<Company>Abdurahim Khudoyberdiev</Company>
-		<Authors>Abdurahim Khudoyberdiev</Authors>
-		<PackageIcon>logo.png</PackageIcon>
+		<Authors>Abdurahim Khudoyberdiev</Authors> 
 		<RootNamespace>Webzor</RootNamespace>
 		<AssemblyName>Webzor</AssemblyName>
 		<AssemblyTitle>Webzor</AssemblyTitle>
-
 		<NeutralLanguage>en-US</NeutralLanguage>
-
 		<Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
 
 		<!--Package-->
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Title>Webzor</Title>
 		<Summary>Blazor libarary that provides access to a number of Browser Web APIs via JSInterop.</Summary>
 		<Copyright>Copyright © 2022</Copyright>
@@ -40,7 +38,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageReleaseNotes>https://github.com/abberdeen/webzor/releases</PackageReleaseNotes>
 		<PackageTags>blazor,web-api,console,geolocation,screen,clipboard,razor,components</PackageTags>
-		<PackageIcon>packageIcon.png</PackageIcon>
+		<!--<PackageIcon>packageIcon.png</PackageIcon>-->
 		<PackageIconUrl>https://github.com/abberdeen/webzor/.github/images/icon.png</PackageIconUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -48,19 +46,40 @@
 		<RepositoryType>git</RepositoryType>
 		<EmbedAllSources>true</EmbedAllSources>
 		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat> 
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- The nuget package icon -->
-		<None Include="..\..\.editorconfig" Link=".editorconfig" />
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+	
+	<!--<Target Name="CustomContentTarget">
+		<ItemGroup>
+			<TfmSpecificPackageFile Include="wwwroot/js/webzor.js">
+				<PackagePath>wwwroot/js</PackagePath>
+			</TfmSpecificPackageFile> 
+		</ItemGroup>
+	</Target>-->
+	
+	<ItemGroup>
+		<None Include="..\..\LICENSE.txt" Pack="true" PackagePath="" />
+ 
 		<None Include="..\..\README.md" Pack="true" PackagePath="" />
-		<None Include="logo.png" Pack="true" PackagePath="" />
+		<!-- The nuget package icon -->
+		<!--<None Include="logo.png" Pack="true" PackagePath="" />-->
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Include="..\..\.editorconfig" Link=".editorconfig" />
+		
 		<!-- ignore the tsconfig.json file in package -->
 		<Content Remove="tsconfig.json" />
+		<TypeScriptCompile Remove="BrowserApi\Geolocation\GeolocationApi.ts" />
+		<TypeScriptCompile Remove="BrowserApi\Screen\ScreenApi.ts" />
+		<TypeScriptCompile Remove="main.ts" />
+		<None Include="BrowserApi\Geolocation\GeolocationApi.ts" />
+		<None Include="BrowserApi\Screen\ScreenApi.ts" />
+		<None Include="main.ts" />
 		<None Include="tsconfig.json" CopyToOutputDirectory="Never"></None>
 	</ItemGroup>
  
@@ -68,8 +87,6 @@
 		<Folder Include="Core\JsInterop\" />
 		<Folder Include="Core\Helpers\" />
 		<Folder Include="Core\Base\" />
-		<Folder Include="GeolocationApi\" />
-		<Folder Include="ScreenApi\" />
 	</ItemGroup>
 
 	<ItemGroup>

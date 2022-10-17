@@ -1,8 +1,0 @@
-﻿ 
-
-namespace Webzor
-{
-    class file
-    {
-    }
-}

@@ -21,13 +21,18 @@
     "url": "https://github.com/abberdeen/webzor/issues"
   },
   "scripts": {
-    "start": "", 
-    "build:lib": "gulp build:library",
-    "build:doc": "gulp build:preview --max-old-space-size=81920",
+    "start": "",
+    "build": "gulp clean",
+    "build:ts": "gulp ts", 
     "preinstall": "dotnet tool restore",
     "changelog": "node ./scripts/print-changelog"
   },
   "devDependencies": {
+    "gulp": "4.0.2",
+    "gulp-newer": "1.4.0",
+    "del": "5.1.0",
+    "through": "~2.3.8",
+    "vinyl": "~3.0.0"
   },
   "dependencies": {
   }
