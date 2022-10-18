@@ -1,0 +1,1 @@
+const pi2=3.2;class ScreenApi{hello(){alert("hello from screen api "+pi2)}dispose(){throw new Error("Method not implemented.")}}class GeolocationApi{hello(){(new ScreenApi).hello()}say(e,o){}dispose(){throw new Error("Method not implemented.")}}var GeolocationApiInstance=new GeolocationApi;export{GeolocationApi,GeolocationApiInstance};

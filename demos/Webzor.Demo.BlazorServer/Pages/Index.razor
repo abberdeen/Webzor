@@ -1,0 +1,25 @@
+﻿@page "/"
+@inject IJSRuntime JS
+@using Webzor.BrowserApi.Geolocation
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code{
+    GeolocationApi geolocationApi;
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender) 
+        {
+            geolocationApi = new GeolocationApi(JS);
+
+            var response = await geolocationApi.GetCurrentLoaction();
+        }
+    }
+}

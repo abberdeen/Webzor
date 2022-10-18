@@ -1,0 +1,1 @@
+const pi=1.2,pi2=3.2;export{pi,pi2};

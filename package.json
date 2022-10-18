@@ -1,15 +1,43 @@
 {
-  "dependencies": {
-    "gulp-clean": "^0.4.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-newer": "^1.4.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
-    "gulp-uglify": "^3.0.2",
-    "through": "^2.3.8",
-    "vinyl": "^3.0.0"
+  "name": "webzor",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "Provides access to a number of Browser Web APIs via JSInterop",
+  "keywords": [
+    "webzor",
+    "web",
+    "api",
+    "js",
+    "interop",
+    "framework",
+    "WebAssembly"
+  ],
+  "homepage": "https://github.com/abberdeen/webzor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abberdeen/webzor"
+  },
+  "bugs": {
+    "url": "https://github.com/abberdeen/webzor/issues"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
-    "typescript": "^4.8.4"
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-include": "^2.4.1",
+    "gulp-newer": "^1.4.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-uglify": "^3.0.2",
+    "through": "^2.3.8",
+    "typescript": "^4.8.4",
+    "vinyl": "^3.0.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "gulp-better-rollup": "^4.0.1",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "rollup-plugin-babel": "^4.4.0"
   }
 }
